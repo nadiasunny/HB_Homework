@@ -59,3 +59,19 @@ if customer6_expected != customer6_paid:
     print(f"{customer6_name} paid ${customer6_paid:.2f},",
           f"expected ${customer6_expected:.2f}"
           )
+
+Melon_Price = 1
+def customer_payment(filename):
+    orders = open(filename)
+
+    for line in orders:
+        line = line.rstrip().split('|')
+        customer_number = line[0]
+        customer = line[1]
+        amount = line[2]
+        expected = line[3]
+
+        print(f"{customer_number}: {customer} paid ${amount}, expected ${expected}")
+    orders.close()    
+
+customer_payment('customer-orders.txt')

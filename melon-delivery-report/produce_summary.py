@@ -10,7 +10,7 @@ def produce_sum(filename):
         str: each sales info
     """
     #open given file
-    the_file = open(filename)
+    the_file = filename.open()
     #iterate over each line in file
     for line in the_file:
         #get rid of any trailing white space on right side & split str on each "|" into a list

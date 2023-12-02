@@ -16,8 +16,10 @@ def print_list(items):
         3
         9
     """
+    for item in items:
+        print(item)
 
-    print("the wrong thing")
+    
 
 
 def long_words(words):
@@ -36,8 +38,12 @@ def long_words(words):
         >>> long_words(["all", "are", "tiny"])
         []
     """
+    long_words = []
+    for word in words:
+        if len(word) > 4:
+            long_words.append(word)
 
-    return ['the wrong thing']
+    return long_words
 
 
 def n_long_words(words, n):
@@ -53,8 +59,13 @@ def n_long_words(words, n):
         >>> n_long_words(["I", "like", "apples", "bananas", "you"], 5)
         ['apples', 'bananas']
     """
+    longer_than_n = []
 
-    return ['the wrong thing']
+    for word in words:
+        if len(word) > n:
+            longer_than_n.append(word)
+
+    return longer_than_n
 
 
 def smallest_int(numbers):
@@ -73,8 +84,16 @@ def smallest_int(numbers):
         >>> smallest_int([]) is None
         True
     """
+    if len(numbers) == 0:
+        return
+    
+    smallest = numbers[0]
 
-    return 100
+    for num in numbers:
+        if num < smallest:
+            smallest = num
+
+    return smallest
 
 
 def largest_int(numbers):
@@ -111,8 +130,13 @@ def halvesies(numbers):
         >>> halvesies([1, 5])
         [0.5, 2.5]
     """
+    if len(numbers) == 0:
+        return
+    halves = []
 
-    return []
+    for num in numbers:
+        halves.append(num/2)
+    return halves
 
 
 def word_lengths(words):
@@ -184,8 +208,13 @@ def join_strings(words):
         >>> join_strings([])
         ''
     """
+    if len(words) == 0:
+        return ''
+    string = ''
+    for word in words:
+        string += word
 
-    return "Not the right thing"
+    return string
 
 
 def average(numbers):
@@ -226,9 +255,12 @@ def join_strings_with_comma(words):
         >>> join_strings_with_comma(["Pretzel"])
         'Pretzel'
     """
+    string = ''
+    for word in words:
+        string += word
+        string += ', '
 
-    return ""
-
+    return string[0:-2]
 
 def reverse_list(items):
     """Return the input list, reversed.
@@ -251,8 +283,7 @@ def reverse_list(items):
         ['apple', 'berry', 'cherry']
     """
 
-    return []
-
+    return items[-1::-1]
 
 def reverse_list_in_place(items):
     """Reverse the input list `in place`.
@@ -273,9 +304,17 @@ def reverse_list_in_place(items):
         >>> orig
         ['I', 'love', 'cookies']
     """
-
-    return []
-
+    #In my opinion this is correct, because you are changing the items var
+    #
+    # items = items[-1::-1]
+    if len(items) == 0:
+        return []
+    for i in range(len(items)):
+        items.append(items[0])
+        items.pop(0)
+    
+    return items
+print(reverse_list_in_place([7, 4, 2, 1]))
 
 def duplicates(items):
     """Return list of words from input list which were duplicates.
