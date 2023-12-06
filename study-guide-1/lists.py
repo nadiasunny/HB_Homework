@@ -309,7 +309,7 @@ def reverse_list_in_place(items):
     # items = items[-1::-1]
     if len(items) == 0:
         return []
-    for i in range(len(items)):
+    for i in range(len(items)-3):
         items.append(items[0])
         items.pop(0)
     
